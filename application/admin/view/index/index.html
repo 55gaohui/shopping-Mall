@@ -12,7 +12,7 @@
 			<!--侧边栏菜单 结束-->
 
 			<!--公共展区 开始-->
-			<iframe id="content" name="content" src="{:url('index/content')}" frameborder="0" scrolling="no" width="80%"></iframe>
+			<iframe id="content" name="content" src="{:url('index/content')}"frameborder="0" scrolling="no" width="80%"></iframe>
 			<script type="text/javascript">
 				function reinitiframe() {
 					var iframe = document.getElementById('content');
@@ -21,7 +21,7 @@
 						var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
 						var height = Math.max(bHeight, dHeight);
 						iframe.height = height;
-						console.log(height);
+						// console.log(height);
 					}catch (ex) {}
                 }
                 window.setInterval("reinitiframe()",200);
