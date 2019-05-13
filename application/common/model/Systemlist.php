@@ -31,5 +31,29 @@ class Systemlist extends Model
             return false;
         }
     }
-
+    //分类列表获取
+    public function getlist(){
+        $field = 'id,name,parent_id,order,link';
+        $where['status'] = 1;
+        $order['order'] = 'asc';
+        $data = $this->field($field)
+            ->where($where)
+            ->order($order)
+            ->select();
+        return $this->tree($data);
+    }
+    /*
+     * 递归 分类列表
+     */
+    public function tree($data, $name = 'child', $parent_id = 0){
+        $arr = array();
+        foreach ($data as $key=>$value){
+            if ($value['parent_id'] == $parent_id ){
+                $arr[] = $value;
+                $value[$name] = $this->tree($data,$name, $value['id']);
+            }
+        }
+        dump($arr);
+        return $arr;
+    }
 }

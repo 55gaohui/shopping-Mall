@@ -22,6 +22,12 @@ class System extends Controller {
         $this->assign('firstcategory',$firstcategory);
         return $this->fetch();
     }
+    public function showlist(){
+        $showlist = model('Systemlist')->getlist();
+//        dump($showlist);
+        return $this->fetch();
+    }
+
     //接收 添加功能 传值
     public function categorysave(){
         //接收数据
